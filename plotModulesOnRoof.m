@@ -79,6 +79,7 @@ ax.XLabel.String = '';
 ax.YLabel.String = '';
 ax.YTick = [];
 ax.ZTick = [];
+ax.FontName = 'Calibri';
 view(ax,0,90);
 
 for ix=1:nmod
@@ -94,7 +95,7 @@ end
 
 if plotting_vals
     NTICK = 5;
-    cb = colorbar(ax);
+    cb = colorbar(ax,'Location','southoutside');
     ticks = linspace(cb.Limits(1),cb.Limits(2),NTICK);
     ticks_l = linspace(min_val,max_val,NTICK);
     cb.Ticks = ticks;
