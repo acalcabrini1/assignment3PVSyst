@@ -27,10 +27,10 @@ else
     error('Invalid load profile index');
 end
 
-plotting =false; %default
+plotting = false; %default
 if ~isempty(varargin) && islogical(varargin{1}) 
     plotting  = varargin{1};
-else
+elseif ~isempty(varargin)
     error(['Check the documentation! The input parameter ',... 
     'plotting is boolean (either true or false)']);
 end
