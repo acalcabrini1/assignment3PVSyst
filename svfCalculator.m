@@ -29,8 +29,8 @@ function svf = svfCalculator(poa_azim,poa_tilt,varargin)
 %
 % poa_tilt = 30;
 % poa_azim = 90;
-% ROWS = 360;
-% COLS = 720;
+% ROWS = 180;
+% COLS = 360;
 % center_azim = repmat(linspace(0+360/(2*COLS),360-360/(2*COLS),COLS),ROWS,1);
 % center_alt = repmat(linspace(90-180/(2*ROWS),-90+180/(2*ROWS),ROWS)',1,COLS);
 % skyline_prof = true(size(center_azim));
@@ -54,7 +54,8 @@ if ~isempty(varargin)
                 if ischar(varargin{k}) && islogical(skyline_prof)
                     ROWS = size(skyline_prof,1);
                     COLS = size(skyline_prof,2);
-                    skyline_mat = skyline_prof;
+                    skyline_mat = [true(ROWS/2,COLS);false(ROWS/2,COLS)];%removing the ground
+                    skyline_mat = skyline_mat & skyline_prof;
                 else
                     error('Invalid skyline format!');
                 end
